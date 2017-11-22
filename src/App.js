@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
-  Route
-} from 'react-router-dom'
+  Route,
+} from 'react-router-dom';
 import './App.css';
-import Form from './Form.js';
-import Confirmation from './Confirmation.js';
+import Form from './Form';
+import Confirmation from './Confirmation';
 
 class App extends Component {
   render() {

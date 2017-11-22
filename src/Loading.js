@@ -3,7 +3,7 @@ import { Row } from 'react-bootstrap';
 
 const Loading = () => (
   <div className="loading-container">
-    <i className="fa fa-spinner fa-pulse fa-spin fa-5x loading" aria-hidden="true"></i>
+    <i className="fa fa-spinner fa-pulse fa-spin fa-5x loading" aria-hidden="true" />
     <div className="typewriter">
       <h2>Adding holiday cheer...</h2>
 

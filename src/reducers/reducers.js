@@ -1,27 +1,28 @@
-import { RECEIVE_CONFIRMATION, CHANGE_FORM_FIELD, CLEAR_TO_FIELDS, FINISH_FETCHING, START_FETCHING } from '../actions/actions.js';
 import { combineReducers, createStore, applyMiddleware } from 'redux';
 import logger from 'redux-logger';
+import { RECEIVE_CONFIRMATION, CHANGE_FORM_FIELD, CLEAR_TO_FIELDS, FINISH_FETCHING, START_FETCHING } from '../actions/actions';
 
-const confirmation = (state = { status: null, data: null, isFetching: false}, action) => {
+
+const confirmation = (state = { status: null, data: null, isFetching: false }, action) => {
   switch (action.type) {
     case RECEIVE_CONFIRMATION:
       return {
         ...state,
         status: action.status,
-        data: action.data
-      }
-      
+        data: action.data,
+      };
+
     case FINISH_FETCHING:
       return {
         ...state,
-        isFetching: false        
-      }
+        isFetching: false,
+      };
 
     case START_FETCHING:
       return {
         ...state,
-        isFetching: true
-      }
+        isFetching: true,
+      };
 
     default:
       return state;
@@ -43,20 +44,20 @@ const form = (state = {
     toAddressState: '',
     toAddressZip: '',
     toMessage: '',
-    imageFile: ''
-  }
+    imageFile: '',
+  },
 }, action) => {
   switch (action.type) {
     case CHANGE_FORM_FIELD: {
-      const formData = state.formData
-      formData[action.fieldName] = action.fieldValue
+      const formData = state.formData;
+      formData[action.fieldName] = action.fieldValue;
 
       return {
         ...state,
-        formData
-      }
+        formData,
+      };
     }
-    case CLEAR_TO_FIELDS:{
+    case CLEAR_TO_FIELDS: {
       const formData = {
         ...state.formData,
         toName: '',
@@ -66,26 +67,26 @@ const form = (state = {
         toAddressState: '',
         toAddressZip: '',
         toMessage: '',
-        imageFile: ''
-      }
+        imageFile: '',
+      };
       return {
         ...state,
-        formData
-      }
+        formData,
+      };
     }
     default:
       return state;
   }
-}
+};
 
 const appReducer = combineReducers({
   confirmation,
-  form
+  form,
 });
 
 const store = createStore(
   appReducer,
-  applyMiddleware(logger)
+  applyMiddleware(logger),
 );
 
 export default store;
